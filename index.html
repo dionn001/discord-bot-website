@@ -3,64 +3,155 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GuardBot - Discord Bot</title>
+    <title>GuardBot - Server Protector</title>
     <style>
+        :root {
+            --bg-dark: #0f172a;
+            --bg-panel: #1e293b;
+            --primary: #38bdf8;
+            --accent: #5865F2;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #0f172a;
-            color: #f8fafc;
-            text-align: center;
-            padding: 50px 20px;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
             margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
         }
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            background: #1e293b;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+
+        .main-container {
+            background-color: var(--bg-panel);
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+            text-align: center;
+            max-width: 650px;
+            border: 2px solid #2d3e5a;
+            position: relative;
+            overflow: hidden;
         }
-        h1 { color: #38bdf8; margin-bottom: 10px; }
-        p { color: #94a3b8; line-height: 1.6; margin-bottom: 30px; }
-        .features {
+
+        .main-container::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: -50px;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.2) 0%, rgba(0,0,0,0) 70%);
+            border-radius: 50%;
+        }
+
+        h1 {
+            color: var(--primary);
+            font-size: 3rem;
+            margin: 0 0 10px 0;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .tagline {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            margin: 0 0 30px 0;
+            line-height: 1.5;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 40px;
             text-align: left;
-            margin: 20px 0;
-            background: #0f172a;
-            padding: 20px;
-            border-radius: 8px;
         }
-        .features li { margin-bottom: 10px; color: #cbd5e1; }
-        .btn {
-            display: inline-block;
-            background-color: #5865F2;
+
+        .feature-card {
+            background-color: var(--bg-dark);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+            border-color: rgba(56, 189, 248, 0.3);
+        }
+
+        .feature-icon {
+            font-size: 1.5rem;
+            margin-right: 10px;
+        }
+
+        .feature-title {
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+        }
+
+        .feature-desc {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .btn-add {
+            background: linear-gradient(135deg, var(--accent) 0%, #4752c4 100%);
             color: white;
-            padding: 12px 30px;
-            font-size: 16px;
+            padding: 16px 40px;
+            font-size: 1.2rem;
             font-weight: bold;
             text-decoration: none;
-            border-radius: 6px;
-            transition: background 0.2s;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(88, 101, 242, 0.4);
+            transition: box-shadow 0.2s, transform 0.2s;
+            display: inline-block;
         }
-        .btn:hover { background-color: #4752c4; }
+
+        .btn-add:hover {
+            box-shadow: 0 10px 25px rgba(88, 101, 242, 0.6);
+            transform: translateY(-3px);
+        }
     </style>
 </head>
 <body>
-    <div class="container">
+
+    <div class="main-container">
         <h1>GuardBot</h1>
-        <p>The ultimate moderation and support ticket bot for your Discord server. Keep your community safe and organized 24/7.</p>
+        <p class="tagline">The Ultimate Modern Discord Server Protector and Support System.</p>
         
-        <div class="features">
-            <strong>✨ Features:</strong>
-            <ul>
-                <li>🛡️ <strong>Anti-Link & Anti-Spam:</strong> Automatically blocks unwanted links and stops spammers.</li>
-                <li>🎫 <strong>Ticket System:</strong> Easy private support channels using interactive buttons.</li>
-                <li>☁️ <strong>Cloud Hosted:</strong> Always online and lightning fast.</li>
-            </ul>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-title"><span class="feature-icon">🛡️</span>Anti-Raid</div>
+                <div class="feature-desc">Active protection that detects and stops mass joins instantly.</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-title"><span class="feature-icon">🔗</span>Anti-Link</div>
+                <div class="feature-desc">Blocks unwanted links to keep your members safe from scams.</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-title"><span class="feature-icon">🔇</span>Anti-Spam</div>
+                <div class="feature-desc">Automated system that silences spammers and prevents disruption.</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-title"><span class="feature-icon">🎫</span>Tickets</div>
+                <div class="feature-desc">Create seamless private support channels with interactive buttons.</div>
+            </div>
         </div>
 
-        <!-- VERVANG DEZE LINK HIERONDER MET JOUW ECHTE DISCORD BOT UITNODIGINGS-LINK -->
-        <a href="HIER_JE_DISCORD_UITNODIGINGS_LINK_PLAKKEN" target="_blank" class="btn">Add to Discord</a>
+        <!-- De knop met jouw echte Discord installatielink -->
+        <a href="https://discord.com/oauth2/authorize?client_id=157124996584456292" target="_blank" class="btn-add">✅ ADD TO DISCORD</a>
     </div>
+
 </body>
 </html>
